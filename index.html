@@ -354,7 +354,7 @@
             document.getElementById('social-proof').innerText = '+4,200 people have downloaded it this week in the U.S.';
             document.getElementById('cta-button').innerText = ctaText;
             startCountdown();
-            localStorage.removeItem('quizProgress'); // Clear progress after showing results to reset on refresh
+            localStorage.removeItem('quizProgress'); // Clear progress after showing results
         }
 
         function startCountdown() {
@@ -368,6 +368,7 @@
         }
 
         function goToOffer() {
+            localStorage.removeItem('quizProgress'); // Extra clear before redirect
             window.location.href = 'https://www.amazon.com/dp/B0FY7LDJWW';
         }
 
@@ -377,15 +378,19 @@
                 currentQuestion = progress.currentQuestion;
                 answers = progress.answers;
                 scores = progress.scores;
-                if (currentQuestion > 0) startQuiz();
+                if (currentQuestion > 0 && currentQuestion < questions.length) { // Only resume if in progress
+                    startQuiz();
+                } else { // If completed, reset
+                    localStorage.removeItem('quizProgress');
+                }
             }
         };
 
         window.onbeforeunload = () => {
-            localStorage.setItem('quizProgress', JSON.stringify({currentQuestion, answers, scores}));
+            if (currentQuestion < questions.length) { // Only save if not completed
+                localStorage.setItem('quizProgress', JSON.stringify({currentQuestion, answers, scores}));
+            }
         };
     </script>
 </body>
 </html>
-```
-
