@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover How to Reverse Your Type 2 Diabetes Naturally - Free Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff; /* Light blue for calming health theme */
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background-color: #228b22; /* Green for natural health */
+            color: #fff;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .hook {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .cta-button {
+            background-color: #ff4500;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #cc3700;
+        }
+        #quiz-section {
+            display: none;
+        }
+        .question {
+            margin: 20px 0;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .option {
+            background-color: #eee;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            min-width: 100px;
+            text-align: center;
+        }
+        .option:hover {
+            background-color: #ddd;
+        }
+        .option.selected {
+            background-color: #228b22; /* Green theme */
+            color: #fff;
+        }
+        #progress {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .progress-bar {
+            background-color: #eee;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background-color: #228b22; /* Green theme */
+            height: 100%;
+            width: 0;
+            transition: width 0.5s;
+        }
+        #result-section {
+            display: none;
+            text-align: center;
+        }
+        .result-title {
+            font-size: 2em;
+            color: #d9534f;
+        }
+        .result-description {
+            margin: 20px 0;
+        }
+        .urgency {
+            background-color: #ffcc00;
+            padding: 10px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .social-proof {
+            margin: 20px 0;
+            font-style: italic;
+            font-size: 1.1em; /* Enhanced for visibility */
+        }
+        .guarantee {
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        #email-capture {
+            display: none;
+            margin: 20px 0;
+        }
+        input[type="email"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #228b22; /* Green theme */
+            color: #fff;
+            margin-top: 40px;
+        }
+        .disclaimer {
+            font-size: 0.8em;
+            margin-top: 20px;
+        }
+        /* Micro-animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .pulse {
+            animation: pulse 1s infinite;
+        }
+        /* Media queries for enhanced mobile */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            .hook {
+                font-size: 1em;
+            }
+            .question {
+                font-size: 1.1em;
+            }
+            .options {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .option {
+                width: 100%;
+                padding: 15px;
+            }
+            input[type="email"] {
+                width: 100%;
+            }
+        }
+        /* New styles for images and testimonials */
+        .hero-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .testimonial {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        .authority {
+            font-weight: bold;
+            color: #228b22;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://cdn.prod.website-files.com/60e33881a9643382c407b823/682611a2849913fa959def60_Reverse-diabetes-Fay-thumbnail.jpeg" alt="Healthy fruits and diabetes tools" class="hero-image">
+        <h1>Are You Ready to Reverse Your Type 2 Diabetes Naturally?</h1>
+        <p class="hook">Discover in just 5 minutes if your body is crying out for help! Answer this interactive quiz and get a personalized diagnosis that could change your life forever. Thousands of Americans have already lowered their glucose without pills or extreme diets.</p>
+        <button class="cta-button pulse" onclick="startQuiz()">Start the Free Test Now</button>
+        <p class="social-proof">"+4,200 Americans have downloaded it this week – Join the natural reversal movement!"</p>
+        <div class="authority">Based on proven natural methods endorsed by health experts – Ley de Autoridad from 'El Libro Negro de la Persuasión'</div>
+    </header>
+
+    <div class="container">
+        <section id="quiz-section">
+            <div id="progress">
+                <p id="progress-text">Question 1 of 20</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+            <div id="question-container" class="question"></div>
+            <div class="options" id="options-container"></div>
+            <div id="email-capture">
+                <p>To receive your instant results and a free bonus (7-Day Checklist to Control Blood Sugar Spikes), enter your email:</p>
+                <input type="email" id="user-email" placeholder="Your email here" required>
+                <button class="cta-button" onclick="submitEmail()">Get Results</button>
+            </div>
+        </section>
+
+        <section id="result-section">
+            <img src="https://cdn.sanity.io/images/0vv8moc6/pharmacytimes/20606b86bdf5e89c1f33bb772e2a70d071e3936e-3540x1991.jpg" alt="Functional medicine for diabetes reversal" class="hero-image">
+            <h2 class="result-title" id="result-title"></h2>
+            <p class="result-description" id="result-description"></p>
+            <div class="testimonial">"This natural method changed my life – no more meds! – John D., Texas"</div>
+            <div class="testimonial">"I reversed my pre-diabetes in 21 days. Amazing! – Sarah K., California"</div>
+            <div class="social-proof" id="social-proof">Join +4,200 satisfied Americans who reclaimed their health naturally.</div>
+            <div class="guarantee">Guarantee: If you don't lower your glucose in 21 days, we refund your money 100%.</div>
+            <div class="urgency pulse" id="urgency-banner">Limited Offer: 50% OFF TODAY - Only 12 bonuses left!</div>
+            <button class="cta-button pulse" id="cta-button" onclick="goToOffer()">Get the Ebook Now and Start Your Transformation</button>
+            <p class="disclaimer">This test is for informational purposes only. It does not replace medical advice. If you are on medication or have high glucose levels, talk to your healthcare professional before making changes to your treatment.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>Privacy Policy | Terms of Use</p>
+    </footer>
+
+    <script>
+        const questions = [
+            {id:1, text:"Do you feel hungry frequently even after eating?", options:["Yes", "Sometimes", "No"], groups: {A: ["Yes"], B: ["Sometimes"], C: ["No"]}},
+            {id:2, text:"Do you accumulate fat mainly in the abdomen?", options:["Yes", "Sometimes", "No"], groups: {C: ["Yes"]}},
+            {id:3, text:"Do you experience anxiety or nervousness frequently?", options:["Yes", "Sometimes", "No"], groups: {C: ["Yes"]}},
+            {id:4, text:"Do you wake up in the middle of the night and find it hard to fall back asleep?", options:["Yes", "Sometimes", "No"], groups: {B: ["Yes"]}},
+            {id:5, text:"Do you feel like you sweat or get hot easily?", options:["Yes", "Sometimes", "No"], groups: {C: ["Yes"]}},
+            {id:6, text:"Do you feel extreme tiredness upon waking (even if you slept)?", options:["Yes", "Sometimes", "No"], groups: {B: ["Yes"]}},
+            {id:7, text:"Do you have cold hands or feet frequently?", options:["Yes", "Sometimes", "No"], groups: {C: ["Yes"]}},
+            {id:8, text:"Do you have intense cravings for sweets or carbs?", options:["Yes", "Sometimes", "No"], groups: {C: ["Yes"]}},
+            {id:9, text:"Do you experience bloating or fluid retention?", options:["Yes", "Sometimes", "No"], groups: {B: ["Yes"]}},
+            {id:10, text:"Does your energy have high peaks followed by strong crashes?", options:["Yes", "Sometimes", "No"], groups: {B: ["Yes"]}},
+            {id:11, text:"Have you noticed hair loss or dry skin?", options:["Yes", "Sometimes", "No"], groups: {C: ["Yes"]}},
+            {id:12, text:"Do you have difficulty concentrating or feel 'brain fog'?", options:["Yes", "Sometimes", "No"], groups: {B: ["Yes"]}},
+            {id:13, text:"Does your weight gain easily even with low calorie intake?", options:["Yes", "Sometimes", "No"], groups: {C: ["Yes"]}},
+            {id:14, text:"Do you have high blood pressure or occasional palpitations?", options:["Yes", "Sometimes", "No"], groups: {A: ["Yes"]}},
+            {id:15, text:"Do you feel dizzy or weak when skipping meals?", options:["Yes", "Sometimes", "No"], groups: {B: ["Yes"]}},
+            {id:16, text:"Is your menstrual cycle irregular or do you have strong menstrual symptoms? (if applicable)", options:["Yes", "Sometimes", "No"], groups: {C: ["Yes"]}},
+            {id:17, text:"Have you been diagnosed with prediabetes or type 2 diabetes?", options:["Yes", "Sometimes", "No"], groups: {A: ["Yes"]}},
+            {id:18, text:"Do you take medications for thyroid or glucose?", options:["Yes", "Sometimes", "No"], groups: {A: ["Yes"]}},
+            {id:19, text:"Do you feel cold in your fingers or numbness in hands/feet?", options:["Yes", "Sometimes", "No"], groups: {A: ["Yes"]}},
+            {id:20, text:"Do you have difficulty recovering energy after light exercise?", options:["Yes", "Sometimes", "No"], groups: {B: ["Yes"]}}
+        ];
+
+        let currentQuestion = 0;
+        let scores = {A: 0, B: 0, C: 0};
+        let answers = [];
+        let userEmail = '';
+
+        function startQuiz() {
+            document.querySelector('header').style.display = 'none';
+            document.getElementById('quiz-section').style.display = 'block';
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questions[currentQuestion];
+            document.getElementById('question-container').innerText = q.text;
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            q.options.forEach(opt => {
+                const div = document.createElement('div');
+                div.classList.add('option');
+                div.innerText = opt;
+                div.onclick = () => selectOption(opt);
+                optionsContainer.appendChild(div);
+            });
+            updateProgress();
+            if (currentQuestion === 9) {
+                document.getElementById('options-container').style.display = 'none';
+                document.getElementById('email-capture').style.display = 'block';
+            } else {
+                document.getElementById('email-capture').style.display = 'none';
+                document.getElementById('options-container').style.display = 'flex';
+            }
+        }
+
+        function selectOption(opt) {
+            const q = questions[currentQuestion];
+            answers[currentQuestion] = opt;
+            for (let group in q.groups) {
+                if (q.groups[group].includes(opt)) {
+                    scores[group] += (opt === 'Yes' ? 2 : opt === 'Sometimes' ? 1 : 0);
+                }
+            }
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function submitEmail() {
+            userEmail = document.getElementById('user-email').value;
+            if (userEmail) {
+                alert('Email captured: ' + userEmail + '. Sending results...');
+                document.getElementById('email-capture').style.display = 'none';
+                document.getElementById('options-container').style.display = 'flex';
+            }
+        }
+
+        function updateProgress() {
+            document.getElementById('progress-text').innerText = `Question ${currentQuestion + 1} of 20`;
+            const width = ((currentQuestion + 1) / 20) * 100;
+            document.getElementById('progress-fill').style.width = `${width}%`;
+        }
+
+        function showResult() {
+            document.getElementById('quiz-section').style.display = 'none';
+            document.getElementById('result-section').style.display = 'block';
+            let maxGroup = 'C';
+            let maxScore = Math.max(scores.A, scores.B, scores.C);
+            if (scores.A === maxScore) maxGroup = 'A';
+            else if (scores.B === maxScore) maxGroup = 'B';
+
+            let title, description, ctaText;
+            if (maxGroup === 'A') {
+                title = 'Severe Risk: Act Today!';
+                description = 'You are showing symptoms that indicate your diabetes may worsen quickly if you don\'t act today. This is not your fault. Your body is just asking for help. Good news: There is a natural solution without pills or side effects that has helped thousands of people lower their glucose in just 21 days.';
+                ctaText = 'Get the Natural Method to Control Diabetes Now — Special Price TODAY';
+            } else if (maxGroup === 'B') {
+                title = 'Controllable Diabetes: You\'re Still in Time!';
+                description = 'Your body still responds, but you\'re on the edge. You\'re very close to the condition advancing if you don\'t make a simple change now. Immediate recommendation: A specific nutritional guide can help you stop and reverse the process safely.';
+                ctaText = 'Avoid Reaching the Point of No Return — Start Your Change Today';
+            } else {
+                title = 'Pre-Diabetes: The Perfect Moment!';
+                description = 'You\'re at the perfect time to reverse it. Your metabolism is asking for adjustments before it\'s too late. This can be corrected with simple changes that don\'t require medications.';
+                ctaText = 'Take Advantage of Your Edge — Improve Your Glucose Before It Advances';
+            }
+
+            document.getElementById('result-title').innerText = title;
+            document.getElementById('result-description').innerText = description;
+            document.getElementById('social-proof').innerText = '+4,200 people have downloaded it this week in the U.S.';
+            document.getElementById('cta-button').innerText = ctaText;
+            startCountdown();
+        }
+
+        function startCountdown() {
+            let timeLeft = 300;
+            const banner = document.getElementById('urgency-banner');
+            const interval = setInterval(() => {
+                timeLeft--;
+                banner.innerText = `Limited Offer: 50% OFF - Expires in ${Math.floor(timeLeft/60)}:${timeLeft%60 < 10 ? '0' : ''}${timeLeft%60} minutes!`;
+                if (timeLeft <= 0) clearInterval(interval);
+            }, 1000);
+        }
+
+        function goToOffer() {
+            window.location.href = 'https://www.amazon.com/dp/B0FY7LDJWW';
+        }
+
+        window.onload = () => {
+            if (localStorage.getItem('quizProgress')) {
+                const progress = JSON.parse(localStorage.getItem('quizProgress'));
+                currentQuestion = progress.currentQuestion;
+                answers = progress.answers;
+                scores = progress.scores;
+                if (currentQuestion > 0) startQuiz();
+            }
+        };
+
+        window.onbeforeunload = () => {
+            localStorage.setItem('quizProgress', JSON.stringify({currentQuestion, answers, scores}));
+        };
+    </script>
+</body>
+</html>
