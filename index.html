@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-              <!-- Meta Pixel Code -->
+    <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -26,7 +26,7 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f8ff; /* Light blue for calming health theme */
+            background-color: #f0f8ff;
             color: #333;
             line-height: 1.6;
         }
@@ -40,7 +40,7 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
         header {
             text-align: center;
             padding: 40px 0;
-            background-color: #2E8B57; /* Softer sea green for friendlier natural feel */
+            background-color: #2E8B57;
             color: #fff;
         }
         h1 {
@@ -63,6 +63,10 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
         }
         .cta-button:hover {
             background-color: #cc3700;
+        }
+        .cta-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
         }
         #quiz-section {
             display: none;
@@ -91,7 +95,7 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
             background-color: #ddd;
         }
         .option.selected {
-            background-color: #2E8B57; /* Softer green theme */
+            background-color: #2E8B57;
             color: #fff;
         }
         #progress {
@@ -105,7 +109,7 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
             overflow: hidden;
         }
         .progress-fill {
-            background-color: #2E8B57; /* Softer green theme */
+            background-color: #2E8B57;
             height: 100%;
             width: 0;
             transition: width 0.5s;
@@ -130,7 +134,7 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
         .social-proof {
             margin: 20px 0;
             font-style: italic;
-            font-size: 1.1em; /* Enhanced for visibility */
+            font-size: 1.1em;
         }
         .guarantee {
             margin: 20px 0;
@@ -144,11 +148,21 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
             padding: 10px;
             width: 80%;
             margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="email"].error {
+            border-color: #d9534f;
+        }
+        .error-message {
+            color: #d9534f;
+            font-size: 0.9em;
+            display: none;
         }
         footer {
             text-align: center;
             padding: 20px;
-            background-color: #2E8B57; /* Softer green theme */
+            background-color: #2E8B57;
             color: #fff;
             margin-top: 40px;
         }
@@ -156,7 +170,6 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
             font-size: 0.8em;
             margin-top: 20px;
         }
-        /* Micro-animations */
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -165,7 +178,6 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
         .pulse {
             animation: pulse 1s infinite;
         }
-        /* Media queries for enhanced mobile */
         @media (max-width: 600px) {
             h1 {
                 font-size: 2em;
@@ -188,7 +200,6 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
                 width: 100%;
             }
         }
-        /* New styles for images and testimonials */
         .hero-image {
             width: 100%;
             max-height: 300px;
@@ -232,7 +243,8 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
             <div id="email-capture">
                 <p>To receive your instant results and a free bonus (7-Day Checklist to Control Blood Sugar Spikes), enter your email:</p>
                 <input type="email" id="user-email" placeholder="Your email here" required>
-                <button class="cta-button" onclick="submitEmail()">Get Results</button>
+                <p class="error-message" id="email-error">Please enter a valid email address</p>
+                <button class="cta-button" onclick="submitEmail()">Continue Quiz</button>
             </div>
         </section>
 
@@ -282,6 +294,7 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
         let scores = {A: 0, B: 0, C: 0};
         let answers = [];
         let userEmail = '';
+        let emailCaptured = false;
 
         function startQuiz() {
             document.querySelector('header').style.display = 'none';
@@ -295,32 +308,40 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
 
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.innerHTML = '';
-            q.options.forEach(opt => {
-                const div = document.createElement('div');
-                div.classList.add('option');
-                div.innerText = opt;
-                div.onclick = () => selectOption(opt);
-                optionsContainer.appendChild(div);
-            });
-            updateProgress();
-            if (currentQuestion === 9) {
+            
+            // Show email capture at question 10 (index 9) if not captured yet
+            if (currentQuestion === 9 && !emailCaptured) {
                 document.getElementById('options-container').style.display = 'none';
                 document.getElementById('email-capture').style.display = 'block';
             } else {
                 document.getElementById('email-capture').style.display = 'none';
                 document.getElementById('options-container').style.display = 'flex';
+                
+                q.options.forEach(opt => {
+                    const div = document.createElement('div');
+                    div.classList.add('option');
+                    div.innerText = opt;
+                    div.onclick = () => selectOption(opt);
+                    optionsContainer.appendChild(div);
+                });
             }
+            
+            updateProgress();
         }
 
         function selectOption(opt) {
             const q = questions[currentQuestion];
             answers[currentQuestion] = opt;
+            
+            // Calculate scores
             for (let group in q.groups) {
                 if (q.groups[group].includes(opt)) {
                     scores[group] += (opt === 'Yes' ? 2 : opt === 'Sometimes' ? 1 : 0);
                 }
             }
+            
             currentQuestion++;
+            
             if (currentQuestion < questions.length) {
                 loadQuestion();
             } else {
@@ -328,13 +349,31 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
             }
         }
 
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
         function submitEmail() {
-            userEmail = document.getElementById('user-email').value;
-            if (userEmail) {
-                alert('Email captured: ' + userEmail + '. Sending results...');
-                document.getElementById('email-capture').style.display = 'none';
-                document.getElementById('options-container').style.display = 'flex';
+            const emailInput = document.getElementById('user-email');
+            const email = emailInput.value.trim();
+            const errorMsg = document.getElementById('email-error');
+            
+            if (!email || !validateEmail(email)) {
+                emailInput.classList.add('error');
+                errorMsg.style.display = 'block';
+                return;
             }
+            
+            userEmail = email;
+            emailCaptured = true;
+            emailInput.classList.remove('error');
+            errorMsg.style.display = 'none';
+            
+            // Continue with the quiz
+            document.getElementById('email-capture').style.display = 'none';
+            document.getElementById('options-container').style.display = 'flex';
+            loadQuestion();
         }
 
         function updateProgress() {
@@ -346,6 +385,7 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
         function showResult() {
             document.getElementById('quiz-section').style.display = 'none';
             document.getElementById('result-section').style.display = 'block';
+            
             let maxGroup = 'C';
             let maxScore = Math.max(scores.A, scores.B, scores.C);
             if (scores.A === maxScore) maxGroup = 'A';
@@ -370,8 +410,9 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
             document.getElementById('result-description').innerText = description;
             document.getElementById('social-proof').innerText = '+4,200 people have downloaded it this week in the U.S.';
             document.getElementById('cta-button').innerText = ctaText;
+            
             startCountdown();
-            localStorage.removeItem('quizProgress'); // Clear progress after showing results
+            localStorage.removeItem('quizProgress');
         }
 
         function startCountdown() {
@@ -379,36 +420,49 @@ src="https://www.facebook.com/tr?id=4064150883874679&ev=PageView&noscript=1"
             const banner = document.getElementById('urgency-banner');
             const interval = setInterval(() => {
                 timeLeft--;
-                banner.innerText = `Limited Offer: 50% OFF - Expires in ${Math.floor(timeLeft/60)}:${timeLeft%60 < 10 ? '0' : ''}${timeLeft%60} minutes!`;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                banner.innerText = `Limited Offer: 50% OFF - Expires in ${minutes}:${seconds < 10 ? '0' : ''}${seconds} minutes!`;
                 if (timeLeft <= 0) clearInterval(interval);
             }, 1000);
         }
 
         function goToOffer() {
-            localStorage.removeItem('quizProgress'); // Extra clear before redirect
             window.location.href = 'https://www.amazon.com/dp/B0FY7LDJWW';
         }
 
-        window.onload = () => {
-            if (localStorage.getItem('quizProgress')) {
-                const progress = JSON.parse(localStorage.getItem('quizProgress'));
-                currentQuestion = progress.currentQuestion;
-                answers = progress.answers;
-                scores = progress.scores;
-                if (currentQuestion > 0 && currentQuestion < questions.length) { // Only resume if in progress
-                    startQuiz();
-                } else { // If completed, reset
+        // Restore progress on page load
+        window.addEventListener('load', () => {
+            const savedProgress = localStorage.getItem('quizProgress');
+            if (savedProgress) {
+                try {
+                    const progress = JSON.parse(savedProgress);
+                    if (progress.currentQuestion >= 0 && progress.currentQuestion < questions.length) {
+                        currentQuestion = progress.currentQuestion;
+                        answers = progress.answers || [];
+                        scores = progress.scores || {A: 0, B: 0, C: 0};
+                        emailCaptured = progress.emailCaptured || false;
+                        userEmail = progress.userEmail || '';
+                        startQuiz();
+                    }
+                } catch (e) {
                     localStorage.removeItem('quizProgress');
                 }
             }
-        };
+        });
 
-        window.onbeforeunload = () => {
-            if (currentQuestion < questions.length) { // Only save if not completed
-                localStorage.setItem('quizProgress', JSON.stringify({currentQuestion, answers, scores}));
+        // Save progress before leaving
+        window.addEventListener('beforeunload', () => {
+            if (currentQuestion > 0 && currentQuestion < questions.length) {
+                localStorage.setItem('quizProgress', JSON.stringify({
+                    currentQuestion,
+                    answers,
+                    scores,
+                    emailCaptured,
+                    userEmail
+                }));
             }
-        };
+        });
     </script>
 </body>
 </html>
-
